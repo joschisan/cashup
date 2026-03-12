@@ -3,6 +3,17 @@ import 'package:cashup/utils/notification_utils.dart';
 
 enum AsyncButtonState { idle, loading }
 
+Widget buildSmallSpinner(BuildContext context) => SizedBox(
+  width: 20,
+  height: 20,
+  child: CircularProgressIndicator(
+    strokeWidth: 2,
+    valueColor: AlwaysStoppedAnimation<Color>(
+      Theme.of(context).colorScheme.primary,
+    ),
+  ),
+);
+
 mixin AsyncButtonMixin<T extends StatefulWidget> on State<T> {
   AsyncButtonState _state = AsyncButtonState.idle;
 

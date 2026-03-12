@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:currency_picker/currency_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/widgets/drawer_shell_widget.dart';
 import 'package:cashup/widgets/async_button_widget.dart';
 import 'package:cashup/utils/drawer_utils.dart';
+import 'package:cashup/utils/currency_utils.dart';
 import 'package:cashup/screens/amount_screen.dart';
 
 class ConfirmCurrencyDrawer extends StatefulWidget {
-  final Currency currency;
+  final FiatCurrency currency;
   final LnUrlWrapper lnurlWrapper;
 
   const ConfirmCurrencyDrawer({
@@ -19,7 +19,7 @@ class ConfirmCurrencyDrawer extends StatefulWidget {
 
   static Future<void> show(
     BuildContext context, {
-    required Currency currency,
+    required FiatCurrency currency,
     required LnUrlWrapper lnurlWrapper,
   }) {
     return DrawerUtils.show(

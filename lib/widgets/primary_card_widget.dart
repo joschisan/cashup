@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:cashup/utils/styles.dart';
 
-class AmountCard extends StatelessWidget {
+class PrimaryCard extends StatelessWidget {
   final Widget child;
+  final EdgeInsetsGeometry? margin;
 
-  const AmountCard({super.key, required this.child});
+  const PrimaryCard({super.key, required this.child, this.margin});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      margin: margin,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(12),
+        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.05),
+        borderRadius: borderRadiusLarge,
         border: Border.all(
           color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
         ),

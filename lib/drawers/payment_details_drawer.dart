@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
-import 'package:cashup/widgets/amount_card_widget.dart';
+import 'package:cashup/widgets/primary_card_widget.dart';
 import 'package:cashup/widgets/amount_display_widget.dart';
 import 'package:cashup/widgets/drawer_shell_widget.dart';
 import 'package:cashup/utils/drawer_utils.dart';
@@ -32,10 +32,10 @@ class PaymentDetailsDrawer extends StatelessWidget {
     return DrawerShell(
       icon: Icons.bolt,
       title: DateFormat(
-        'MMM dd, HH:mm:ss',
+        'EEEE d MMMM, HH:mm',
       ).format(DateTime.fromMillisecondsSinceEpoch(payment.createdAt)),
       children: [
-        AmountCard(
+        PrimaryCard(
           child: AmountDisplay(
             amountFiat: payment.amountFiat,
             amountSats: payment.amountMsat ~/ 1000,

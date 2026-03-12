@@ -6,6 +6,7 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:cashup/utils/notification_utils.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/screens/currency_screen.dart';
+import 'package:cashup/utils/styles.dart';
 
 Widget _buildQrScanner(
   MobileScannerController controller,
@@ -28,7 +29,7 @@ Widget _buildQrScanner(
             right: 16,
             child: IconButton(
               onPressed: onPaste,
-              icon: const Icon(Icons.paste, color: Colors.white, size: 36),
+              icon: Icon(Icons.paste, color: Colors.white, size: smallIconSize),
             ),
           ),
         ],
@@ -108,7 +109,6 @@ class _LnurlScreenState extends State<LnurlScreen> {
         _isScanning = false;
       });
 
-      // Navigate to currency picker screen
       if (mounted) {
         Navigator.pushReplacement(
           context,
@@ -144,7 +144,7 @@ class _LnurlScreenState extends State<LnurlScreen> {
             Expanded(
               child: Center(
                 child: SizedBox(
-                  height: 64,
+                  height: heroIconSize,
                   child: PageView.builder(
                     controller: _pageController,
                     physics: const NeverScrollableScrollPhysics(),
@@ -155,16 +155,14 @@ class _LnurlScreenState extends State<LnurlScreen> {
                         children: [
                           Icon(
                             icon,
-                            size: 64,
+                            size: heroIconSize,
                             color: Theme.of(context).colorScheme.primary,
                           ),
                           const SizedBox(width: 16),
                           Text(
                             name,
-                            style: TextStyle(
-                              fontSize: 42,
+                            style: heroStyle.copyWith(
                               fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                           ),
                         ],
@@ -179,9 +177,8 @@ class _LnurlScreenState extends State<LnurlScreen> {
               child: Center(
                 child: Text(
                   'Scan a lightning url payment code from a lightning wallet that supports lnurl payment verification.',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context).colorScheme.onSurface,
+                  style: smallStyle.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   textAlign: TextAlign.center,
                 ),

@@ -4,6 +4,7 @@ import 'package:cashup/widgets/async_button_widget.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/screens/invoice_screen.dart';
 import 'package:cashup/screens/cashup_screen.dart';
+import 'package:cashup/utils/styles.dart';
 
 class AmountScreen extends StatefulWidget {
   final LnurlClient lnurlClient;
@@ -65,7 +66,6 @@ class _AmountScreenState extends State<AmountScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Amount display - fills remaining space above continue button
             Expanded(
               child: Center(
                 child: Column(
@@ -73,20 +73,13 @@ class _AmountScreenState extends State<AmountScreen> {
                   children: [
                     Text(
                       '${widget.lnurlClient.currencySymbol()} ${NumberFormat('#,##0.00').format(_amountFiat / 100)}',
-                      style: TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
+                      style: heroStyle.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       widget.lnurlClient.currencyName(),
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.onSurface.withValues(alpha: 0.6),
+                      style: mediumStyle.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                     ),
                   ],
@@ -94,13 +87,11 @@ class _AmountScreenState extends State<AmountScreen> {
               ),
             ),
 
-            // Continue button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: AsyncButton(text: 'Continue', onPressed: _handleSubmit),
             ),
 
-            // Custom number pad - explicit buttons
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: GridView.count(
@@ -110,8 +101,7 @@ class _AmountScreenState extends State<AmountScreen> {
                 padding: EdgeInsets.zero,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
-                childAspectRatio:
-                    2.0, // Makes buttons less tall (wider than tall)
+                childAspectRatio: 2.0,
                 children: [
                   _buildNumberButton(1),
                   _buildNumberButton(2),
@@ -124,7 +114,7 @@ class _AmountScreenState extends State<AmountScreen> {
                   _buildNumberButton(9),
                   _buildActionButton(Icons.clear, _onClear),
                   _buildNumberButton(0),
-                  _buildActionButton(Icons.backspace_outlined, _onBackspace),
+                  _buildActionButton(Icons.arrow_back, _onBackspace),
                 ],
               ),
             ),
@@ -137,18 +127,14 @@ class _AmountScreenState extends State<AmountScreen> {
   Widget _buildNumberButton(int number) {
     return Material(
       color: Colors.transparent,
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: borderRadiusLarge,
       child: InkWell(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: borderRadiusLarge,
         onTap: () => _onKeyboardTap(number),
         child: Center(
           child: Text(
             number.toString(),
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
+            style: largeStyle.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
       ),
@@ -158,17 +144,11 @@ class _AmountScreenState extends State<AmountScreen> {
   Widget _buildActionButton(IconData icon, VoidCallback onTap) {
     return Material(
       color: Colors.transparent,
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: borderRadiusLarge,
       child: InkWell(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: borderRadiusLarge,
         onTap: onTap,
-        child: Center(
-          child: Icon(
-            icon,
-            size: 28,
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
-        ),
+        child: Center(child: Icon(icon, size: smallIconSize)),
       ),
     );
   }

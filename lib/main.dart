@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:cashup/screens/lnurl_screen.dart';
 import 'package:cashup/screens/amount_screen.dart';
 import 'package:cashup/bridge_generated.dart/frb_generated.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
+import 'package:cashup/utils/styles.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +33,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFFF7931A)),
           useMaterial3: true,
-          appBarTheme: const AppBarTheme(centerTitle: true),
+          fontFamily: GoogleFonts.dmSans().fontFamily,
+          appBarTheme: const AppBarTheme(
+            centerTitle: true,
+            titleTextStyle: mediumStyle,
+          ),
         ),
         darkTheme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
@@ -39,7 +45,11 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.dark,
           ),
           useMaterial3: true,
-          appBarTheme: const AppBarTheme(centerTitle: true),
+          fontFamily: GoogleFonts.dmSans().fontFamily,
+          appBarTheme: const AppBarTheme(
+            centerTitle: true,
+            titleTextStyle: mediumStyle,
+          ),
         ),
         themeMode: ThemeMode.dark,
         home:

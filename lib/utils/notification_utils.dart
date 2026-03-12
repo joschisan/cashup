@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:cashup/utils/styles.dart';
 
 class NotificationUtils {
   static const _defaultDuration = Duration(milliseconds: 1500);
@@ -31,18 +32,9 @@ class NotificationUtils {
             bottom: false,
             child: Row(
               children: [
-                Icon(icon, size: 32, color: iconColor),
+                Icon(icon, size: mediumIconSize, color: iconColor),
                 const SizedBox(width: 16),
-                Expanded(
-                  child: Text(
-                    message,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
-                  ),
-                ),
+                Expanded(child: Text(message, style: mediumStyle)),
               ],
             ),
           ),

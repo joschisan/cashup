@@ -5,6 +5,8 @@ import 'package:cashup/widgets/amount_display_widget.dart';
 import 'package:cashup/drawers/dismiss_invoice_drawer.dart';
 import 'package:cashup/utils/notification_utils.dart';
 import 'package:cashup/screens/confirmation_screen.dart';
+import 'package:cashup/utils/async_button_mixin.dart';
+import 'package:cashup/utils/styles.dart';
 
 class InvoiceScreen extends StatefulWidget {
   final LnurlClient lnurlClient;
@@ -68,7 +70,6 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Top section: Amount centered in available space
             Expanded(
               child: Center(
                 child: AmountDisplay(
@@ -78,7 +79,6 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                 ),
               ),
             ),
-            // Center: QR code
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
@@ -94,27 +94,17 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                 ),
               ),
             ),
-            // Bottom section: Loading indicator centered in available space
             Expanded(
               child: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        color: Theme.of(context).colorScheme.primary,
-                        strokeWidth: 2,
-                      ),
-                    ),
+                    buildSmallSpinner(context),
                     const SizedBox(width: 12),
                     Text(
                       'Waiting for payment...',
-                      style: TextStyle(
+                      style: smallStyle.copyWith(
                         color: Theme.of(context).colorScheme.primary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],

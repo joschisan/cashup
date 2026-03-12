@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:cashup/utils/styles.dart';
 
 class AmountDisplay extends StatelessWidget {
   final int amountFiat;
@@ -18,24 +19,22 @@ class AmountDisplay extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Fiat amount display (prominent)
-        Text(
-          '$currencySymbol ${NumberFormat('#,##0.00').format(amountFiat / 100)}',
-          style: TextStyle(
-            fontSize: 48,
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.onSurface,
+        Text.rich(
+          TextSpan(
+            text:
+                '$currencySymbol ${NumberFormat('#,##0.00').format(amountFiat / 100)}',
+            style: heroStyle.copyWith(fontWeight: FontWeight.bold),
           ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 8),
-        // Sats amount display (smaller, primary color)
-        Text(
-          '${NumberFormat('#,###').format(amountSats)} sats',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w500,
-            color: Theme.of(context).colorScheme.primary,
+        Text.rich(
+          TextSpan(
+            text: '${NumberFormat('#,###').format(amountSats)} sats',
+            style: largeStyle.copyWith(
+              fontWeight: FontWeight.w500,
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
           textAlign: TextAlign.center,
         ),
