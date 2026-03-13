@@ -39,7 +39,6 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
             onChanged: (value) => setState(() => _query = value),
           ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16),
         groupKey: (currency) => currency.code[0],
         itemBuilder:
             (context, currency) => ListTile(
