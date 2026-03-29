@@ -175,12 +175,15 @@ class _LnurlScreenState extends State<LnurlScreen> {
             _buildQrScanner(_controller, _onDetect, _handleClipboardPaste),
             Expanded(
               child: Center(
-                child: Text(
-                  'Scan a lightning url payment code from a lightning wallet that supports lnurl payment verification.',
-                  style: smallStyle.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: Text(
+                    'Scan a lightning url payment code from a lightning wallet that supports lnurl payment verification.',
+                    style: smallStyle.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
             ),
