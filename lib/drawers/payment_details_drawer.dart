@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/widgets/primary_card_widget.dart';
 import 'package:cashup/widgets/amount_display_widget.dart';
@@ -30,7 +31,7 @@ class PaymentDetailsDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DrawerShell(
-      icon: Icons.bolt,
+      icon: PhosphorIconsRegular.lightning,
       title: DateFormat(
         'EEEE d MMMM, HH:mm',
       ).format(DateTime.fromMillisecondsSinceEpoch(payment.createdAt)),

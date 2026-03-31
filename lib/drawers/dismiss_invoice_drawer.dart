@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/widgets/async_button_widget.dart';
 import 'package:cashup/widgets/drawer_shell_widget.dart';
 import 'package:cashup/utils/drawer_utils.dart';
@@ -26,7 +27,7 @@ class _DismissInvoiceDrawerState extends State<DismissInvoiceDrawer> {
   @override
   Widget build(BuildContext context) {
     return DrawerShell(
-      icon: Icons.error,
+      icon: PhosphorIconsRegular.warningCircle,
       title: 'Dismiss Unpaid Invoice?',
       children: [AsyncButton(text: 'Confirm', onPressed: _handleConfirm)],
     );

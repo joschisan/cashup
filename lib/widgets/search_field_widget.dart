@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/utils/styles.dart';
 
 class SearchField extends StatelessWidget {
@@ -32,7 +33,7 @@ class SearchField extends StatelessWidget {
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: 8),
           child: Icon(
-            Icons.search,
+            PhosphorIconsRegular.magnifyingGlass,
             size: mediumIconSize,
             color: Theme.of(context).colorScheme.primary,
           ),

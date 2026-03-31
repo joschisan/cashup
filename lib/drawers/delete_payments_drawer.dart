@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/widgets/async_button_widget.dart';
 import 'package:cashup/widgets/drawer_shell_widget.dart';
@@ -42,7 +43,7 @@ class _DeletePaymentsDrawerState extends State<DeletePaymentsDrawer> {
   @override
   Widget build(BuildContext context) {
     return DrawerShell(
-      icon: Icons.delete_outline,
+      icon: PhosphorIconsRegular.trash,
       title: 'Delete Payment History?',
       children: [AsyncButton(text: 'Confirm', onPressed: _handleConfirm)],
     );

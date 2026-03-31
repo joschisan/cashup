@@ -456,7 +456,7 @@ checksum = "7360491ce676a36bf9bb3c56c1aa791658183a54d2744120f27285738d90465a"
 [[package]]
 name = "fedimint-lnurl"
 version = "0.11.0-alpha"
-source = "git+https://github.com/joschisan/fedimint?branch=fix-lnurl#6026ef3947d0df2614f5206242ec7b86d34dab0d"
+source = "git+https://github.com/fedimint/fedimint#8f90a6d6bc5f8e657d3e300768825de075d7222f"
 dependencies = [
  "bech32",
  "lightning-invoice",

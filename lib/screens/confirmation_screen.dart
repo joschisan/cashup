@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/widgets/async_button_widget.dart';
 import 'package:cashup/widgets/amount_display_widget.dart';
+import 'package:cashup/utils/styles.dart';
 
 class ConfirmationScreen extends StatelessWidget {
   final String currencySymbol;
@@ -22,20 +24,24 @@ class ConfirmationScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                child: Center(
-                  child: AmountDisplay(
-                    amountFiat: amountFiat,
-                    amountSats: amountSats,
-                    currencySymbol: currencySymbol,
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Icon(
+                      PhosphorIconsRegular.checkCircle,
+                      color: Colors.green,
+                      size: heroIconSize * 3,
+                    ),
+                    AmountDisplay(
+                      amountFiat: amountFiat,
+                      amountSats: amountSats,
+                      currencySymbol: currencySymbol,
+                    ),
+                  ],
                 ),
               ),
-              const Icon(Icons.check_circle, color: Colors.green, size: 200),
-              const Expanded(child: SizedBox()),
               AsyncButton(
                 text: 'Continue',
                 onPressed: () async {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/drawers/confirm_currency_drawer.dart';
-import 'package:cashup/utils/currency_utils.dart';
 import 'package:cashup/utils/styles.dart';
 import 'package:cashup/widgets/grouped_list_widget.dart';
 import 'package:cashup/widgets/search_field_widget.dart';
@@ -19,7 +18,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
   String _query = '';
 
   List<FiatCurrency> get _filtered =>
-      fiatCurrencies
+      listFiatCurrencies()
           .where(
             (c) =>
                 c.code.toLowerCase().contains(_query.toLowerCase()) ||
@@ -39,7 +38,6 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
             onChanged: (value) => setState(() => _query = value),
           ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16),
         groupKey: (currency) => currency.code[0],
         itemBuilder:
             (context, currency) => ListTile(

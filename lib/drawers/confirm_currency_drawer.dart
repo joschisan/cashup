@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/widgets/drawer_shell_widget.dart';
 import 'package:cashup/widgets/async_button_widget.dart';
 import 'package:cashup/utils/drawer_utils.dart';
-import 'package:cashup/utils/currency_utils.dart';
 import 'package:cashup/screens/amount_screen.dart';
 
 class ConfirmCurrencyDrawer extends StatefulWidget {
@@ -64,7 +64,7 @@ class _ConfirmCurrencyDrawerState extends State<ConfirmCurrencyDrawer> {
   @override
   Widget build(BuildContext context) {
     return DrawerShell(
-      icon: Icons.currency_exchange,
+      icon: PhosphorIconsRegular.currencyDollar,
       title: 'Select ${widget.currency.name}?',
       children: [AsyncButton(text: 'Confirm', onPressed: _handleConfirm)],
     );

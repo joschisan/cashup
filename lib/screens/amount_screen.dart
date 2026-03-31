@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/widgets/async_button_widget.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/screens/invoice_screen.dart';
@@ -49,7 +50,7 @@ class _AmountScreenState extends State<AmountScreen> {
         title: const Text('Enter Amount'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.menu),
+            icon: const Icon(PhosphorIconsRegular.listPlus),
             onPressed: () {
               Navigator.push(
                 context,
@@ -92,31 +93,33 @@ class _AmountScreenState extends State<AmountScreen> {
               child: AsyncButton(text: 'Continue', onPressed: _handleSubmit),
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                childAspectRatio: 2.0,
-                children: [
-                  _buildNumberButton(1),
-                  _buildNumberButton(2),
-                  _buildNumberButton(3),
-                  _buildNumberButton(4),
-                  _buildNumberButton(5),
-                  _buildNumberButton(6),
-                  _buildNumberButton(7),
-                  _buildNumberButton(8),
-                  _buildNumberButton(9),
-                  _buildActionButton(Icons.clear, _onClear),
-                  _buildNumberButton(0),
-                  _buildActionButton(Icons.arrow_back, _onBackspace),
-                ],
-              ),
+            const SizedBox(height: 16),
+
+            GridView.count(
+              crossAxisCount: 3,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
+              childAspectRatio: 2.0,
+              children: [
+                _buildNumberButton(1),
+                _buildNumberButton(2),
+                _buildNumberButton(3),
+                _buildNumberButton(4),
+                _buildNumberButton(5),
+                _buildNumberButton(6),
+                _buildNumberButton(7),
+                _buildNumberButton(8),
+                _buildNumberButton(9),
+                _buildActionButton(PhosphorIconsRegular.x, _onClear),
+                _buildNumberButton(0),
+                _buildActionButton(
+                  PhosphorIconsRegular.arrowLeft,
+                  _onBackspace,
+                ),
+              ],
             ),
           ],
         ),

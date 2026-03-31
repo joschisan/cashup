@@ -30,7 +30,7 @@ class AmountDisplay extends StatelessWidget {
         const SizedBox(height: 8),
         Text.rich(
           TextSpan(
-            text: '${NumberFormat('#,###').format(amountSats)} sats',
+            text: '${NumberFormat('#,###').format(amountSats)} sat',
             style: largeStyle.copyWith(
               fontWeight: FontWeight.w500,
               color: Theme.of(context).colorScheme.primary,

@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/widgets/primary_card_widget.dart';
 import 'package:cashup/widgets/amount_display_widget.dart';
@@ -31,7 +32,7 @@ class _CashupScreenState extends State<CashupScreen> {
             lnurlClient: widget.lnurlClient,
           ),
       leading: Icon(
-        Icons.bolt,
+        PhosphorIconsRegular.lightning,
         color: Theme.of(context).colorScheme.primary,
         size: mediumIconSize,
       ),
@@ -115,11 +116,11 @@ class _CashupScreenState extends State<CashupScreen> {
         title: const Text('Cashup'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.save),
+            icon: const Icon(PhosphorIconsRegular.floppyDisk),
             onPressed: () => _saveTransactions(context),
           ),
           IconButton(
-            icon: const Icon(Icons.delete),
+            icon: const Icon(PhosphorIconsRegular.trash),
             onPressed:
                 () => DeletePaymentsDrawer.show(
                   context,

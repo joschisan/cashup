@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/utils/notification_utils.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
 import 'package:cashup/screens/currency_screen.dart';
@@ -25,11 +26,15 @@ Widget _buildQrScanner(
             child: MobileScanner(controller: controller, onDetect: onDetect),
           ),
           Positioned(
-            bottom: 16,
-            right: 16,
+            bottom: 8,
+            right: 8,
             child: IconButton(
               onPressed: onPaste,
-              icon: Icon(Icons.paste, color: Colors.white, size: smallIconSize),
+              icon: Icon(
+                PhosphorIconsRegular.clipboard,
+                color: Colors.white,
+                size: smallIconSize,
+              ),
             ),
           ),
         ],
@@ -52,9 +57,9 @@ Future<String> _getClipboardText() async {
 }
 
 const _variants = [
-  (Icons.bolt, 'Receive'),
-  (Icons.menu, 'Review'),
-  (Icons.save, 'Export'),
+  (PhosphorIconsRegular.lightning, 'Receive'),
+  (PhosphorIconsRegular.listPlus, 'Review'),
+  (PhosphorIconsRegular.floppyDisk, 'Export'),
 ];
 
 class LnurlScreen extends StatefulWidget {
@@ -175,12 +180,15 @@ class _LnurlScreenState extends State<LnurlScreen> {
             _buildQrScanner(_controller, _onDetect, _handleClipboardPaste),
             Expanded(
               child: Center(
-                child: Text(
-                  'Scan a lightning url payment code from a lightning wallet that supports lnurl payment verification.',
-                  style: smallStyle.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: Text(
+                    'Scan a lightning url payment code from a lightning wallet that supports lnurl payment verification.',
+                    style: smallStyle.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
             ),

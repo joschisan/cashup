@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/utils/styles.dart';
 
 class NotificationUtils {
@@ -49,7 +50,7 @@ class NotificationUtils {
     _showNotification(
       context,
       message,
-      Icons.error,
+      PhosphorIconsRegular.warningCircle,
       Colors.red,
       _defaultDuration,
     );
@@ -59,7 +60,7 @@ class NotificationUtils {
     _showNotification(
       context,
       message,
-      Icons.check_circle,
+      PhosphorIconsRegular.checkCircle,
       Colors.green,
       _defaultDuration,
     );
