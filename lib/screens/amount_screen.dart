@@ -50,7 +50,7 @@ class _AmountScreenState extends State<AmountScreen> {
         title: const Text('Enter Amount'),
         actions: [
           IconButton(
-            icon: const Icon(PhosphorIconsRegular.listPlus),
+            icon: const PhosphorIcon(PhosphorIconsRegular.listPlus),
             onPressed: () {
               Navigator.push(
                 context,
@@ -151,7 +151,7 @@ class _AmountScreenState extends State<AmountScreen> {
       child: InkWell(
         borderRadius: borderRadiusLarge,
         onTap: onTap,
-        child: Center(child: Icon(icon, size: smallIconSize)),
+        child: Center(child: PhosphorIcon(icon, size: smallIconSize)),
       ),
     );
   }

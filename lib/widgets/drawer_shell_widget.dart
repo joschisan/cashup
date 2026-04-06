@@ -1,3 +1,4 @@
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:cashup/utils/styles.dart';
 
@@ -28,7 +29,7 @@ class DrawerShell extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(
+                PhosphorIcon(
                   icon,
                   size: largeIconSize,
                   color: Theme.of(context).colorScheme.primary,

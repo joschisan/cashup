@@ -33,7 +33,7 @@ class NotificationUtils {
             bottom: false,
             child: Row(
               children: [
-                Icon(icon, size: mediumIconSize, color: iconColor),
+                PhosphorIcon(icon, size: mediumIconSize, color: iconColor),
                 const SizedBox(width: 16),
                 Expanded(child: Text(message, style: mediumStyle)),
               ],

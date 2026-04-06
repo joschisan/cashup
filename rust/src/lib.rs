@@ -129,6 +129,13 @@ pub struct Payment {
 #[flutter_rust_bridge::frb(opaque)]
 pub struct LnUrlWrapper(String);
 
+impl LnUrlWrapper {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn to_string(&self) -> String {
+        fedimint_lnurl::encode_lnurl(&self.0)
+    }
+}
+
 #[flutter_rust_bridge::frb(sync)]
 pub fn parse_lnurl(lnurl: &str) -> Result<LnUrlWrapper, String> {
     if let Some(stripped) = lnurl.strip_prefix("lightning:") {

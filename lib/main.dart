@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:cashup/screens/lnurl_screen.dart';
+import 'package:cashup/screens/landing_screen.dart';
 import 'package:cashup/screens/amount_screen.dart';
 import 'package:cashup/bridge_generated.dart/frb_generated.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFFF7931A)),
           useMaterial3: true,
-          fontFamily: GoogleFonts.dmSans().fontFamily,
+          fontFamily: GoogleFonts.inter().fontFamily,
           appBarTheme: const AppBarTheme(
             centerTitle: true,
             titleTextStyle: mediumStyle,
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.dark,
           ),
           useMaterial3: true,
-          fontFamily: GoogleFonts.dmSans().fontFamily,
+          fontFamily: GoogleFonts.inter().fontFamily,
           appBarTheme: const AppBarTheme(
             centerTitle: true,
             titleTextStyle: mediumStyle,
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         home:
             existingClient != null
                 ? AmountScreen(lnurlClient: existingClient!)
-                : const LnurlScreen(),
+                : const LandingScreen(),
       ),
     );
   }

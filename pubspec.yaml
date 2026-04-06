@@ -60,7 +60,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo.png
-    - assets/qr_icon_lightning.png
 
 # Flutter Launcher Icons configuration
 flutter_launcher_icons:

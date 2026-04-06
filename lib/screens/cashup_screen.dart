@@ -31,26 +31,15 @@ class _CashupScreenState extends State<CashupScreen> {
             payment: payment,
             lnurlClient: widget.lnurlClient,
           ),
-      leading: Icon(
+      leading: PhosphorIcon(
         PhosphorIconsRegular.lightning,
         color: Theme.of(context).colorScheme.primary,
         size: mediumIconSize,
       ),
-      title: Align(
-        alignment: Alignment.centerLeft,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Text(
-            '${widget.lnurlClient.currencySymbol()} ${NumberFormat('#,##0.00').format(payment.amountFiat / 100.0)}',
-            style: mediumStyle.copyWith(
-              color: Theme.of(context).colorScheme.onPrimary,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+      title: Text(
+        '+ ${NumberFormat('#,##0.00').format(payment.amountFiat / 100.0)} ${widget.lnurlClient.currencySymbol()}',
+        style: mediumStyle.copyWith(
+          color: Theme.of(context).colorScheme.primary,
         ),
       ),
       trailing: Text(
@@ -116,11 +105,11 @@ class _CashupScreenState extends State<CashupScreen> {
         title: const Text('Cashup'),
         actions: [
           IconButton(
-            icon: const Icon(PhosphorIconsRegular.floppyDisk),
+            icon: const PhosphorIcon(PhosphorIconsRegular.floppyDisk),
             onPressed: () => _saveTransactions(context),
           ),
           IconButton(
-            icon: const Icon(PhosphorIconsRegular.trash),
+            icon: const PhosphorIcon(PhosphorIconsRegular.trash),
             onPressed:
                 () => DeletePaymentsDrawer.show(
                   context,

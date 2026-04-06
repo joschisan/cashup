@@ -62,7 +62,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
     appBar: AppBar(
       title: const Text('Lightning Invoice'),
       leading: IconButton(
-        icon: const Icon(PhosphorIconsRegular.arrowLeft),
+        icon: const PhosphorIcon(PhosphorIconsRegular.arrowLeft),
         onPressed: () => DismissInvoiceDrawer.show(context),
       ),
     ),
@@ -71,33 +71,14 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            QrCodeWidget(
-              data: widget.invoice.raw(),
-              iconAsset: 'assets/qr_icon_lightning.png',
-            ),
+            QrCodeWidget(data: widget.invoice.raw()),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  AmountDisplay(
-                    amountFiat: widget.amountFiat,
-                    amountSats: widget.invoice.amountMsat() ~/ 1000,
-                    currencySymbol: widget.lnurlClient.currencySymbol(),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      buildSmallSpinner(context),
-                      const SizedBox(width: 12),
-                      Text(
-                        'Waiting for payment...',
-                        style: smallStyle.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              child: Center(
+                child: AmountDisplay(
+                  amountFiat: widget.amountFiat,
+                  amountSats: widget.invoice.amountMsat() ~/ 1000,
+                  currencySymbol: widget.lnurlClient.currencySymbol(),
+                ),
               ),
             ),
           ],

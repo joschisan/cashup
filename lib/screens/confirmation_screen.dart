@@ -29,7 +29,7 @@ class ConfirmationScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
+                    PhosphorIcon(
                       PhosphorIconsRegular.checkCircle,
                       color: Colors.green,
                       size: heroIconSize * 3,

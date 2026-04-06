@@ -1,14 +1,12 @@
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
-import 'package:cashup/drawers/confirm_currency_drawer.dart';
 import 'package:cashup/utils/styles.dart';
 import 'package:cashup/widgets/grouped_list_widget.dart';
 import 'package:cashup/widgets/search_field_widget.dart';
 
 class CurrencyScreen extends StatefulWidget {
-  final LnUrlWrapper lnurlWrapper;
-
-  const CurrencyScreen({super.key, required this.lnurlWrapper});
+  const CurrencyScreen({super.key});
 
   @override
   State<CurrencyScreen> createState() => _CurrencyScreenState();
@@ -42,24 +40,13 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
         itemBuilder:
             (context, currency) => ListTile(
               contentPadding: listTilePadding,
-              leading: SizedBox(
-                width: 64,
-                child: Text(
-                  currency.code,
-                  textAlign: TextAlign.center,
-                  style: largeStyle.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
+              leading: PhosphorIcon(
+                PhosphorIconsRegular.currencyDollar,
+                color: Theme.of(context).colorScheme.primary,
+                size: mediumIconSize,
               ),
               title: Text(currency.name, style: mediumStyle),
-              onTap: () {
-                ConfirmCurrencyDrawer.show(
-                  context,
-                  currency: currency,
-                  lnurlWrapper: widget.lnurlWrapper,
-                );
-              },
+              onTap: () => Navigator.pop(context, currency),
             ),
       ),
     );

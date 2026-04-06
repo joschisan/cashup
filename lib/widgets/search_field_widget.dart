@@ -32,7 +32,7 @@ class SearchField extends StatelessWidget {
         hintStyle: mediumStyle,
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: 8),
-          child: Icon(
+          child: PhosphorIcon(
             PhosphorIconsRegular.magnifyingGlass,
             size: mediumIconSize,
             color: Theme.of(context).colorScheme.primary,
