@@ -5,8 +5,6 @@ import 'package:cashup/widgets/qr_code_widget.dart';
 import 'package:cashup/drawers/dismiss_invoice_drawer.dart';
 import 'package:cashup/utils/notification_utils.dart';
 import 'package:cashup/screens/confirmation_screen.dart';
-import 'package:cashup/utils/async_button_mixin.dart';
-import 'package:cashup/utils/styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class InvoiceScreen extends StatefulWidget {
@@ -44,6 +42,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
           builder:
               (context) => ConfirmationScreen(
                 currencySymbol: widget.lnurlClient.currencySymbol(),
+                currencyName: widget.lnurlClient.currencyName(),
                 amountFiat: widget.amountFiat,
                 amountSats: widget.invoice.amountMsat() ~/ 1000,
               ),
@@ -72,14 +71,12 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
         child: Column(
           children: [
             QrCodeWidget(data: widget.invoice.raw()),
-            Expanded(
-              child: Center(
-                child: AmountDisplay(
-                  amountFiat: widget.amountFiat,
-                  amountSats: widget.invoice.amountMsat() ~/ 1000,
-                  currencySymbol: widget.lnurlClient.currencySymbol(),
-                ),
-              ),
+            const SizedBox(height: 16),
+            AmountDisplay(
+              amountFiat: widget.amountFiat,
+              amountSats: widget.invoice.amountMsat() ~/ 1000,
+              currencySymbol: widget.lnurlClient.currencySymbol(),
+              currencyName: widget.lnurlClient.currencyName(),
             ),
           ],
         ),

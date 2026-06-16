@@ -1,42 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:cashup/utils/styles.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:cashup/widgets/bordered_list_widget.dart';
+import 'package:cashup/widgets/detail_row_widget.dart';
 
 class AmountDisplay extends StatelessWidget {
   final int amountFiat;
   final int amountSats;
   final String currencySymbol;
+  final String currencyName;
 
   const AmountDisplay({
     super.key,
     required this.amountFiat,
     required this.amountSats,
     required this.currencySymbol,
+    required this.currencyName,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
+    return BorderedList.column(
       children: [
-        Text.rich(
-          TextSpan(
-            text:
-                '$currencySymbol ${NumberFormat('#,##0.00').format(amountFiat / 100)}',
-            style: heroStyle.copyWith(fontWeight: FontWeight.bold),
-          ),
-          textAlign: TextAlign.center,
+        DetailRow(
+          icon: PhosphorIconsRegular.currencyBtc,
+          label: 'Amount in Bitcoin',
+          value: '${NumberFormat('#,###').format(amountSats)} sat',
         ),
-        const SizedBox(height: 8),
-        Text.rich(
-          TextSpan(
-            text: '${NumberFormat('#,###').format(amountSats)} sat',
-            style: largeStyle.copyWith(
-              fontWeight: FontWeight.w500,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-          ),
-          textAlign: TextAlign.center,
+        DetailRow(
+          icon: PhosphorIconsRegular.currencyDollar,
+          label: 'Amount in $currencyName',
+          value:
+              '$currencySymbol ${NumberFormat('#,##0.00').format(amountFiat / 100)}',
         ),
       ],
     );

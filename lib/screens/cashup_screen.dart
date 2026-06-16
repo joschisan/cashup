@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
-import 'package:cashup/widgets/primary_card_widget.dart';
 import 'package:cashup/widgets/amount_display_widget.dart';
 import 'package:cashup/drawers/payment_details_drawer.dart';
 import 'package:cashup/drawers/delete_payments_drawer.dart';
@@ -122,12 +121,13 @@ class _CashupScreenState extends State<CashupScreen> {
       body: SafeArea(
         child: GroupedList<Payment>(
           items: payments,
-          header: PrimaryCard(
-            margin: const EdgeInsets.only(bottom: 8),
+          header: Padding(
+            padding: const EdgeInsets.only(bottom: 8),
             child: AmountDisplay(
               amountFiat: widget.lnurlClient.sumAmountsFiat(),
               amountSats: widget.lnurlClient.sumAmountsMsat() ~/ 1000,
               currencySymbol: widget.lnurlClient.currencySymbol(),
+              currencyName: widget.lnurlClient.currencyName(),
             ),
           ),
           groupKey:

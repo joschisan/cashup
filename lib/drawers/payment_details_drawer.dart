@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:cashup/bridge_generated.dart/lib.dart';
-import 'package:cashup/widgets/primary_card_widget.dart';
-import 'package:cashup/widgets/amount_display_widget.dart';
+import 'package:cashup/widgets/bordered_list_widget.dart';
+import 'package:cashup/widgets/detail_row_widget.dart';
 import 'package:cashup/widgets/drawer_shell_widget.dart';
 import 'package:cashup/utils/drawer_utils.dart';
 
@@ -32,16 +32,30 @@ class PaymentDetailsDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return DrawerShell(
       icon: PhosphorIconsRegular.lightning,
-      title: DateFormat(
-        'EEEE d MMMM, HH:mm',
-      ).format(DateTime.fromMillisecondsSinceEpoch(payment.createdAt)),
+      title: 'Lightning Receive',
       children: [
-        PrimaryCard(
-          child: AmountDisplay(
-            amountFiat: payment.amountFiat,
-            amountSats: payment.amountMsat ~/ 1000,
-            currencySymbol: lnurlClient.currencySymbol(),
-          ),
+        BorderedList.column(
+          children: [
+            DetailRow(
+              icon: PhosphorIconsRegular.currencyBtc,
+              label: 'Amount in Bitcoin',
+              value:
+                  '${NumberFormat('#,###').format(payment.amountMsat ~/ 1000)} sat',
+            ),
+            DetailRow(
+              icon: PhosphorIconsRegular.currencyDollar,
+              label: 'Amount in ${lnurlClient.currencyName()}',
+              value:
+                  '${lnurlClient.currencySymbol()} ${NumberFormat('#,##0.00').format(payment.amountFiat / 100)}',
+            ),
+            DetailRow(
+              icon: PhosphorIconsRegular.calendarBlank,
+              label: 'Date',
+              value: DateFormat('EEEE d MMMM, HH:mm').format(
+                DateTime.fromMillisecondsSinceEpoch(payment.createdAt),
+              ),
+            ),
+          ],
         ),
       ],
     );

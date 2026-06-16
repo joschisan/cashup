@@ -6,12 +6,14 @@ import 'package:cashup/utils/styles.dart';
 
 class ConfirmationScreen extends StatelessWidget {
   final String currencySymbol;
+  final String currencyName;
   final int amountFiat;
   final int amountSats;
 
   const ConfirmationScreen({
     super.key,
     required this.currencySymbol,
+    required this.currencyName,
     required this.amountFiat,
     required this.amountSats,
   });
@@ -26,22 +28,21 @@ class ConfirmationScreen extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    PhosphorIcon(
-                      PhosphorIconsRegular.checkCircle,
-                      color: Colors.green,
-                      size: heroIconSize * 3,
-                    ),
-                    AmountDisplay(
-                      amountFiat: amountFiat,
-                      amountSats: amountSats,
-                      currencySymbol: currencySymbol,
-                    ),
-                  ],
+                child: Center(
+                  child: PhosphorIcon(
+                    PhosphorIconsRegular.checkCircle,
+                    color: Colors.green,
+                    size: heroIconSize * 3,
+                  ),
                 ),
               ),
+              AmountDisplay(
+                amountFiat: amountFiat,
+                amountSats: amountSats,
+                currencySymbol: currencySymbol,
+                currencyName: currencyName,
+              ),
+              const SizedBox(height: 16),
               AsyncButton(
                 text: 'Continue',
                 onPressed: () async {
